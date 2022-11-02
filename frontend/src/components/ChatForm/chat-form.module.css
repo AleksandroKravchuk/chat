@@ -1,0 +1,30 @@
+.input {
+     padding: 5px 5px;
+    background-color: rgb(187, 191, 184);
+    border-radius: 5px;
+    margin: 0;
+  border: none;
+  width: 100%;
+  outline: none;
+}
+.input_false {
+     padding: 5px 5px;
+    background-color: rgb(187, 191, 184);
+    border-radius: 5px;
+    margin: 0;
+  border: none;
+  width: 100%;
+  outline: none;
+}
+.input:focus::placeholder { color: transparent; }
+.input_false::placeholder { color:red; font-weight: bold;}
+.button {
+    position: absolute;
+    right: 5px;
+top: 0;
+cursor: pointer;
+height: 100%;
+}
+.form {
+position: relative;
+}

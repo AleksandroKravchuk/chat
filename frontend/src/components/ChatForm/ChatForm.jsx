@@ -1,36 +1,55 @@
-import {useState} from "react";
+import { useState } from "react";
 
 import styles from "./chat-form.module.css";
 
-const ChatForm = ({onSubmit}) => {
-    const [state, setState] = useState({
-        message: ""
-    });
+const ChatForm = ({ onSubmit, user }) => {
+  const [state, setState] = useState({
+    user: "",
+    message: "",
+  });
+  const [input, setInput] = useState(true);
 
-    const handleChange = ({target}) => {
-        const {name, value} = target;
-        setState(prevState => ({
-            ...prevState, 
-            [name]: value
-        }))
-    };
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    setState((prevState) => ({
+      ...prevState,
+      user,
+      [name]: value,
+    }));
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        onSubmit({...state});
-        setState({
-            message: ""
-        })
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { message } = e.target;
+    if (message.value === "") {
+      setInput(false);
+      setTimeout(() => {
+        setInput(true);
+      }, 1000);
+    } else {
+      onSubmit({ ...state });
+      setState({
+        message: "",
+      });
     }
+  };
 
-    const {message} = state;
+  const inp = input === true ? styles.input : styles.input_false;
+  const { message } = state;
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <input value={message} name="message" onChange={handleChange} placeholder="Введите ваше сообщение" />
-            <button>Отправить</button>
-        </form>
-    )
-}
+  return (
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <input
+        className={inp}
+        value={message}
+        name="message"
+        onChange={handleChange}
+        placeholder="Enter your message"
+      />
+      <button className={styles.button}>Send</button>
+    </form>
+  );
+};
 
 export default ChatForm;

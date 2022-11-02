@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/AleksandroKravchuk/chat/issues"
   },
-  "homepage": "https://github.com/AleksandroKravchuk/chat#readme"
+  "homepage": "https://github.com/AleksandroKravchuk/chat#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.3"
+  }
 }
